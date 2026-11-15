@@ -57,9 +57,9 @@ O recorte inicial considera **Lajeado e Estrela, no Vale do Taquari (RS)**.
 
 | Integrante | GitHub | LinkedIn |
 | :--- | :--- | :--- |
-| **Arthur Fassina** | [@arthurhfassina](https://github.com/arthurhfassina) | [Perfil](https://www.linkedin.com/in/arthur-henrique-f-3a7065142) |
-| **Mateus Carniel Brambilla** | [@matbdev](https://github.com/matbdev) | [Perfil](https://www.linkedin.com/in/mateus-carniel-brambilla/) |
-| **Yuri Korolko** | [@korolkoo](https://github.com/korolkoo) | [Perfil](https://www.linkedin.com/in/yuri-korolko-192689401/) |
+| **Arthur Fassina** | [@arthurhfassina](https://github.com/arthurhfassina) | [LinkedIn • Arthur](https://www.linkedin.com/in/arthur-henrique-f-3a7065142) |
+| **Mateus Carniel Brambilla** | [@matbdev](https://github.com/matbdev) | [LinkedIn • Mateus](https://www.linkedin.com/in/mateus-carniel-brambilla/) |
+| **Yuri Korolko** | [@korolkoo](https://github.com/korolkoo) | [LinkedIn • Yuri](https://www.linkedin.com/in/yuri-korolko-192689401/) |
 
 ## ◇ Tecnologias e arquitetura
 
