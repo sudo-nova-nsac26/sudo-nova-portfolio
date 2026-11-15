@@ -1,18 +1,19 @@
 <div align="center">
 
+<h1>Sudo Nova</h1>
+
 <a href="https://sudonova.surfacesignal.earth/">
-  <img src="public/images/sudo-nova-logo-transparent.png" alt="Sudo Nova — astronaut penguin mascot" width="220" />
+  <img src="https://raw.githubusercontent.com/sudo-nova-nsac26/sudo-nova-portfolio/main/public/images/sudo-nova-logo-transparent.png" alt="Sudo Nova astronaut penguin mascot" width="220" />
 </a>
 
-**Engineering, software, and data. Together.**
+<p><strong>From open-source curiosity to real-world impact.</strong></p>
+<p>Engineering, software, and data. Together.</p>
 
-Three people, different perspectives, and a shared drive to turn curiosity into real projects.
+<p><strong>English</strong> · <a href="./README.pt-BR.md">Português</a></p>
 
-**English** · [Português](./README.pt-BR.md)
+<p><a href="https://sudonova.surfacesignal.earth/">Website</a> · <a href="https://sudonova.surfacesignal.earth/#projetos">Projects</a> · <a href="https://sudonova.surfacesignal.earth/#equipe">Team</a> · <a href="https://sudonova.surfacesignal.earth/#contato">Contact</a></p>
 
-[![Explore Portfolio](https://img.shields.io/badge/EXPLORE_PORTFOLIO-00DBE7?style=for-the-badge&labelColor=071824&logo=cloudflare&logoColor=white)](https://sudonova.surfacesignal.earth/)
-[![Team GitHub](https://img.shields.io/badge/TEAM_GITHUB-172A38?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sudo-nova-nsac26)
-
+</div>
 
 <!-- Technology badges — verified against package.json and application source -->
 <p align="center">
@@ -32,11 +33,6 @@ Three people, different perspectives, and a shared drive to turn curiosity into 
   <a href="https://lucide.dev/"><img src="https://img.shields.io/badge/Lucide_React-3A2A42?style=for-the-badge&amp;logo=lucide&amp;logoColor=F5A3B5" alt="Lucide React" /></a>
   <a href="https://pages.cloudflare.com/"><img src="https://img.shields.io/badge/Cloudflare_Pages-55361E?style=for-the-badge&amp;logo=cloudflare&amp;logoColor=F38020" alt="Cloudflare Pages" /></a>
 </p>
-
-
-**[Website](https://sudonova.surfacesignal.earth/)** · **[Projects](https://sudonova.surfacesignal.earth/#projetos)** · **[Team](https://sudonova.surfacesignal.earth/#equipe)** · **[Contact](https://sudonova.surfacesignal.earth/#contato)**
-
-</div>
 
 ---
 
