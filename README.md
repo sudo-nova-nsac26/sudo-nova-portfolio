@@ -4,8 +4,6 @@
   <img src="public/images/sudo-nova-logo-transparent.png" alt="Sudo Nova — mascote pinguim astronauta" width="220" />
 </a>
 
-# Sudo Nova
-
 **Engenharia, software e dados. Em conjunto.**
 
 Três pessoas, diferentes perspectivas e a vontade de transformar curiosidade em projetos reais.
