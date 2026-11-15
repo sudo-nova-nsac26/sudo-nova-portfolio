@@ -6,7 +6,7 @@ import type { FormEvent } from "react";
 import { ArrowDown, ArrowUpRight, CodeXml, Menu, X, Sun, Moon, Mail, Copy, Send } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { content, members, organizationUrl } from "./content";
+import { content, members, organizationUrl, projectPresentationUrl } from "./content";
 import { usePreferences, savePreference } from "./preferences";
 import styles from "./landing.module.css";
 import { useMascotMotion } from "./mascot-motion";
@@ -19,12 +19,6 @@ const CONTACT_EMAIL = "sudonova@matbdev.com";
 
 function LinkedInIcon() {
   return <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM3.3 9h3.4v12H3.3V9Zm5.7 0h3.3v1.6c.6-1.1 1.8-1.9 3.5-1.9 3.5 0 4.2 2.3 4.2 5.3v7h-3.4v-6.2c0-1.5 0-3.3-2-3.3s-2.3 1.6-2.3 3.2V21H9V9Z"/></svg>;
-}
-function SurfaceArt() {
-  return <svg className={styles.surface} viewBox="0 0 800 410" fill="none" aria-hidden="true">
-    {Array.from({ length: 23 }, (_, i) => <path key={i} d={`M-80 ${100+i*15} C110 ${-50+i*13}, 200 ${390-i*3}, 370 ${150+i*9} S620 ${60+i*10}, 880 ${160+i*12}`} stroke="currentColor" strokeOpacity={0.18+i*0.025} />)}
-    <circle cx="425" cy="205" r="68" stroke="currentColor" strokeDasharray="4 7"/><path d="M410 205h30M425 190v30" stroke="currentColor"/>
-  </svg>;
 }
 function safeProfile(value: string, domain: string) {
   if (!value) return null;
@@ -137,8 +131,8 @@ export default function SudoNovaLanding() {
       <section className={styles.projects} id="projetos" aria-labelledby="projects-title">
         <div className={styles.sectionHeading} data-reveal=""><p className={styles.eyebrow}>{t.projectLabel}</p><h2 id="projects-title">{t.projectTitle}</h2></div>
         <article className={styles.project} data-reveal="">
-          <div className={styles.projectVisual}><span className={styles.visualLabel}>{t.projectNumber}</span><SurfaceArt/><span className={styles.visualCaption}>SURFACE<br/><strong>SIGNAL</strong></span><span className={styles.artLabel}>{t.conceptual}</span></div>
-          <div className={styles.projectCopy}><p className={styles.eyebrow}>{t.projectTag}</p><h3>SurfaceSignal<span>.</span></h3><p className={styles.projectLead}>{t.projectLead}</p><p>{t.projectText}</p><p className={styles.competition}>{t.projectContext}</p><a className={styles.textLink} href={organizationUrl} target="_blank" rel="noopener noreferrer">{t.projectLink}<ArrowUpRight size={19} aria-hidden="true"/></a></div>
+          <div className={styles.projectVisual}><span className={styles.visualLabel}>{t.projectNumber}</span><Image src="/images/logo-surface-signal.png" alt="SurfaceSignal" width={1447} height={1087} sizes="(max-width: 720px) 88vw, 560px" className={styles.projectLogo}/></div>
+          <div className={styles.projectCopy}><p className={styles.eyebrow}>{t.projectTag}</p><h3>SurfaceSignal<span>.</span></h3><p className={styles.projectLead}>{t.projectLead}</p><p>{t.projectText}</p><p className={styles.competition}>{t.projectContext}</p><div className={styles.projectActions}><a className={styles.textLink} href={organizationUrl} target="_blank" rel="noopener noreferrer">{t.projectLink}<ArrowUpRight size={19} aria-hidden="true"/></a>{projectPresentationUrl && <a className={styles.textLink} href={projectPresentationUrl} target="_blank" rel="noopener noreferrer">{t.presentationLink}<ArrowUpRight size={19} aria-hidden="true"/></a>}</div></div>
         </article>
         <div className={styles.projectScope} aria-label={t.projectDetails} data-reveal="">{t.projectScope.map(([title,description],index) => <div key={index}><span>0{index+1}</span><h3>{title}</h3><p>{description}</p></div>)}</div>
         <p className={styles.projectLimit}>{t.projectLimit}</p>
@@ -183,7 +177,7 @@ export default function SudoNovaLanding() {
               {t.contactTopics.map((topic, index) => <button type="button" key={topic} aria-pressed={contactTopic === index} onClick={() => setContactTopic(index)}>{topic}</button>)}
             </div>
             <label className={styles.contactField}><span>{t.contactName}</span><input type="text" maxLength={100} value={contactName} onChange={event => setContactName(event.target.value)} placeholder={t.contactNamePlaceholder}/></label>
-            <label className={styles.contactField}><span>{t.contactMessage}</span><textarea required minLength={2} maxLength={2500} rows={5} value={contactMessage} onChange={event => setContactMessage(event.target.value)} placeholder={t.contactMessagePlaceholder}/></label>
+            <label className={styles.contactField}><span>{t.contactMessage}</span><textarea required minLength={2} maxLength={2500} rows={5} value={contactMessage} onChange={event => setContactMessage(event.target.value)} placeholder={t.contactExamples[contactTopic]}/></label>
             <button className={styles.contactSubmit} type="submit"><Send size={17} aria-hidden="true"/>{t.contactSend}<ArrowUpRight size={16} aria-hidden="true"/></button>
             <p className={styles.contactNotice}>{t.contactNotice}</p>
           </form>
@@ -195,4 +189,5 @@ export default function SudoNovaLanding() {
     <FreeMascot language={language}/>
   </div>;
 }
+
 
