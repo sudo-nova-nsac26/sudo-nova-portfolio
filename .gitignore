@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+
+# Next.js
+.next/
+out/
+node_modules/
+
+# Instalador temporário
+sudo-nova-update/
