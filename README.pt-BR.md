@@ -1,22 +1,23 @@
 <div align="center">
 
+<h1>Sudo Nova</h1>
+
 <a href="https://sudonova.surfacesignal.earth/">
-  <img src="public/images/sudo-nova-logo-transparent.png" alt="Sudo Nova — mascote pinguim astronauta" width="220" />
+  <img src="https://raw.githubusercontent.com/sudo-nova-nsac26/sudo-nova-portfolio/main/public/images/sudo-nova-logo-transparent.png" alt="Mascote pinguim astronauta da Sudo Nova" width="220" />
 </a>
 
-**Engenharia, software e dados. Em conjunto.**
+<p><strong>Da curiosidade pelo código aberto ao impacto no mundo real.</strong></p>
+<p>Engenharia, software e dados. Em conjunto.</p>
 
-Três pessoas, diferentes perspectivas e a vontade compartilhada de transformar curiosidade em projetos reais.
+<p><a href="./README.md">English</a> · <strong>Português</strong></p>
 
-[English](./README.md) · **Português**
+<p><a href="https://sudonova.surfacesignal.earth/">Site</a> · <a href="https://sudonova.surfacesignal.earth/#projetos">Projetos</a> · <a href="https://sudonova.surfacesignal.earth/#equipe">Equipe</a> · <a href="https://sudonova.surfacesignal.earth/#contato">Contato</a></p>
 
-[![Explorar Portfólio](https://img.shields.io/badge/EXPLORAR_PORTF%C3%93LIO-00DBE7?style=for-the-badge&labelColor=071824&logo=cloudflare&logoColor=white)](https://sudonova.surfacesignal.earth/)
-[![GitHub da Equipe](https://img.shields.io/badge/GITHUB_DA_EQUIPE-172A38?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sudo-nova-nsac26)
-
+</div>
 
 <!-- Technology badges — verified against package.json and application source -->
 <p align="center">
-  <sub><strong>FRAMEWORK &amp; INTERFACE</strong></sub>
+  <sub><strong>FRAMEWORK E INTERFACE</strong></sub>
 </p>
 <p align="center">
   <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js_16-071824?style=for-the-badge&amp;logo=nextdotjs&amp;logoColor=FFFFFF" alt="Next.js 16" /></a>
@@ -25,18 +26,13 @@ Três pessoas, diferentes perspectivas e a vontade compartilhada de transformar 
   <a href="https://github.com/css-modules/css-modules"><img src="https://img.shields.io/badge/CSS_Modules-174B62?style=for-the-badge&amp;logo=css3&amp;logoColor=FFFFFF" alt="CSS Modules" /></a>
 </p>
 <p align="center">
-  <sub><strong>ANIMATION, ICONS &amp; HOSTING</strong></sub>
+  <sub><strong>ANIMAÇÕES, ÍCONES E HOSPEDAGEM</strong></sub>
 </p>
 <p align="center">
   <a href="https://gsap.com/"><img src="https://img.shields.io/badge/GSAP-18382E?style=for-the-badge&amp;logo=gsap&amp;logoColor=88CE02" alt="GSAP" /></a>
   <a href="https://lucide.dev/"><img src="https://img.shields.io/badge/Lucide_React-3A2A42?style=for-the-badge&amp;logo=lucide&amp;logoColor=F5A3B5" alt="Lucide React" /></a>
   <a href="https://pages.cloudflare.com/"><img src="https://img.shields.io/badge/Cloudflare_Pages-55361E?style=for-the-badge&amp;logo=cloudflare&amp;logoColor=F38020" alt="Cloudflare Pages" /></a>
 </p>
-
-
-**[Site oficial](https://sudonova.surfacesignal.earth/)** · **[Projetos](https://sudonova.surfacesignal.earth/#projetos)** · **[Equipe](https://sudonova.surfacesignal.earth/#equipe)** · **[Contato](https://sudonova.surfacesignal.earth/#contato)**
-
-</div>
 
 ---
 
