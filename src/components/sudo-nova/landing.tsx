@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUpRight, CodeXml, Menu, X, Sun, Moon, Languages } from "lucide-react";
+import type { FormEvent } from "react";
+import { ArrowDown, ArrowUpRight, CodeXml, Menu, X, Sun, Moon, Mail, Copy, Send } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { content, members, organizationUrl } from "./content";
@@ -10,7 +11,11 @@ import { usePreferences, savePreference } from "./preferences";
 import styles from "./landing.module.css";
 import { useMascotMotion } from "./mascot-motion";
 
+import FreeMascot from "./free-mascot";
+import OrbitalBackground from "./orbital-background";
+
 const sections = ["sobre", "projetos", "equipe", "contato"];
+const CONTACT_EMAIL = "sudonova@matbdev.com";
 
 function LinkedInIcon() {
   return <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM3.3 9h3.4v12H3.3V9Zm5.7 0h3.3v1.6c.6-1.1 1.8-1.9 3.5-1.9 3.5 0 4.2 2.3 4.2 5.3v7h-3.4v-6.2c0-1.5 0-3.3-2-3.3s-2.3 1.6-2.3 3.2V21H9V9Z"/></svg>;
@@ -28,19 +33,32 @@ function safeProfile(value: string, domain: string) {
 
 export default function SudoNovaLanding() {
   const root = useRef<HTMLDivElement>(null);
-  const mascotImage = useRef<HTMLDivElement>(null);
   const logoStage = useRef<HTMLDivElement>(null);
   const mascotDock = useRef<HTMLSpanElement>(null);
   const flyingMascot = useRef<HTMLDivElement>(null);
   const originalLogo = useRef<HTMLDivElement>(null);
   const logoBase = useRef<HTMLDivElement>(null);
-  useMascotMotion({ root, stage: logoStage, dock: mascotDock, flyer: flyingMascot, original: originalLogo, base: logoBase, corner: mascotImage });
+  useMascotMotion({ root, stage: logoStage, dock: mascotDock, flyer: flyingMascot, original: originalLogo, base: logoBase });
   const { language, theme } = usePreferences();
   const t = content[language];
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedMember, setSelectedMember] = useState<string | null>(null);
   const [hoverMember, setHoverMember] = useState<string | null>(null);
   const activeMember = hoverMember ?? selectedMember;
+  const [contactTopic, setContactTopic] = useState(0);
+  const [contactName, setContactName] = useState("");
+  const [contactMessage, setContactMessage] = useState("");
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  function handleContactSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const subject = "[Sudo Nova] " + t.contactTopics[contactTopic];
+    const body = (contactName.trim() ? contactName.trim() + "\n\n" : "") + contactMessage.trim();
+    window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  }
+  async function copyContactEmail() {
+    try { await navigator.clipboard.writeText(CONTACT_EMAIL); setCopiedEmail(true); }
+    catch { setCopiedEmail(false); }
+  }
   const menuButton = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -77,13 +95,17 @@ export default function SudoNovaLanding() {
   }, [menuOpen]);
 
   return <div className={styles.site} data-theme={theme} lang={language === "pt" ? "pt-BR" : "en"} ref={root}>
+    <OrbitalBackground/>
     <a href="#conteudo" className={styles.skip}>{t.skip}</a>
     <header className={styles.header}>
       <div className={styles.headerInner}>
         <a className={styles.brand} href="#inicio" aria-label={t.home}><span ref={mascotDock} className={styles.mascotDock} aria-hidden="true"><Image src="/images/sudo-nova-mascot.png" alt="" width={1254} height={1254} sizes="46px"/></span><span className={styles.wordmark}>Sudo <span>Nova</span></span></a>
         <nav className={styles.desktopNav} aria-label={t.navigation}>{sections.map((id,i) => <a key={id} href={`#${id}`}>{t.nav[i]}</a>)}</nav>
         <div className={styles.headerActions}>
-          <button className={styles.toolButton} title={t.language} aria-label={t.language} onClick={() => savePreference("language", language === "pt" ? "en" : "pt")}><Languages size={17} aria-hidden="true"/><span>{language === "pt" ? "EN" : "PT"}</span></button>
+          <div className={styles.languageSwitch} role="group" aria-label={language === "pt" ? "Idioma" : "Language"}>
+            <button type="button" lang="pt-BR" aria-label="Português" aria-pressed={language === "pt"} onClick={() => savePreference("language", "pt")}>PT</button>
+            <button type="button" lang="en" aria-label="English" aria-pressed={language === "en"} onClick={() => savePreference("language", "en")}>EN</button>
+          </div>
           <button className={styles.toolButton} title={`${t.theme} ${theme === "dark" ? t.light : t.dark}`} aria-label={`${t.theme} ${theme === "dark" ? t.light : t.dark}`} onClick={() => savePreference("theme", theme === "dark" ? "light" : "dark")}>{theme === "dark" ? <Sun size={18} aria-hidden="true"/> : <Moon size={18} aria-hidden="true"/>}</button>
           <a className={styles.github} href={organizationUrl} target="_blank" rel="noopener noreferrer"><CodeXml size={17} aria-hidden="true"/><span>GitHub</span><ArrowUpRight size={15} aria-hidden="true"/></a>
           <button ref={menuButton} className={styles.menuButton} aria-label={menuOpen ? t.closeMenu : t.openMenu} aria-expanded={menuOpen} aria-controls="mobile-nav" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X aria-hidden="true"/> : <Menu aria-hidden="true"/>}</button>
@@ -128,7 +150,12 @@ export default function SudoNovaLanding() {
           const li = safeProfile(member.linkedin, "linkedin.com");
           return <article className={styles.member} id={`member-${member.number}`} data-active={activeMember === member.number} key={member.number} onMouseEnter={() => setHoverMember(member.number)} onMouseLeave={() => setHoverMember(null)} onFocusCapture={() => setHoverMember(member.number)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setHoverMember(null); }}>
             <div className={styles.memberTop}><span>SUDO NOVA</span><span>/{member.number}</span></div>
-            <span className={styles.initials} aria-hidden="true">{member.initials}</span>
+            <div className={styles.memberIdentity}>
+              <span className={styles.initials} aria-hidden="true">{member.initials}</span>
+              <div className={styles.memberPortrait}>
+                {member.photo ? <Image src={member.photo} alt={member.name} fill sizes="(max-width: 720px) 150px, 180px" className={styles.memberPhoto} /> : <span className={styles.portraitPlaceholder} aria-hidden="true">{member.initials}</span>}
+              </div>
+            </div>
             <h3><button className={styles.memberSelect} aria-pressed={selectedMember === member.number} aria-label={`${t.select} ${member.name}`} onClick={() => setSelectedMember(selectedMember === member.number ? null : member.number)}>{member.name}</button></h3>
             <p>{t.member}</p><div className={styles.profileLinks}>
               {gh ? <a href={gh} target="_blank" rel="noopener noreferrer" aria-label={`${t.openProfile} ${member.name} — GitHub`}><CodeXml size={17} aria-hidden="true"/>GitHub<ArrowUpRight size={13} aria-hidden="true"/></a> : <span aria-disabled="true" title={t.missingProfile}><CodeXml size={17} aria-hidden="true"/>GitHub</span>}
@@ -138,10 +165,34 @@ export default function SudoNovaLanding() {
         })}</div>
       </section>
       <section className={`${styles.interests} ${styles.collective}`} aria-labelledby="interests-title" data-reveal=""><div><p className={styles.eyebrow}>{t.interestsLabel}</p><h2 id="interests-title">{t.interestsTitle}</h2></div><div className={styles.collectiveBody}><p className={styles.collectiveIntro}>{t.interestsIntro}</p><p>{t.collectiveText}</p></div></section>
-      <section className={styles.contact} id="contato" aria-labelledby="contact-title" data-reveal=""><p className={styles.eyebrow}>{t.contactLabel}</p><h2 id="contact-title">{t.contactTitle}<br/><em>{t.contactAccent}</em></h2><a className={styles.primary} href={organizationUrl} target="_blank" rel="noopener noreferrer"><CodeXml size={19} aria-hidden="true"/>{t.github}<ArrowUpRight size={19} aria-hidden="true"/></a></section>
+      <section className={styles.contact} id="contato" aria-labelledby="contact-title" data-reveal="">
+        <div className={styles.contactInner}>
+          <div className={styles.contactIntro}>
+            <p className={styles.eyebrow}>{t.contactLabel}</p>
+            <h2 id="contact-title">{t.contactTitle}<br/><em>{t.contactAccent}</em></h2>
+            <p className={styles.contactLead}>{t.contactIntro}</p>
+            <div className={styles.contactEmail}>
+              <a href={`mailto:${CONTACT_EMAIL}`}><Mail size={19} aria-hidden="true"/><span>{CONTACT_EMAIL}</span><ArrowUpRight size={17} aria-hidden="true"/></a>
+              <button type="button" onClick={copyContactEmail}><Copy size={16} aria-hidden="true"/>{copiedEmail ? t.contactCopied : t.contactCopy}</button>
+            </div>
+            <a className={styles.contactGithub} href={organizationUrl} target="_blank" rel="noopener noreferrer"><CodeXml size={17} aria-hidden="true"/>{t.github}<ArrowUpRight size={15} aria-hidden="true"/></a>
+          </div>
+          <form className={styles.contactForm} onSubmit={handleContactSubmit}>
+            <p className={styles.contactFormTitle}>{t.contactQuick}</p>
+            <div className={styles.topicButtons} role="group" aria-label={t.contactQuick}>
+              {t.contactTopics.map((topic, index) => <button type="button" key={topic} aria-pressed={contactTopic === index} onClick={() => setContactTopic(index)}>{topic}</button>)}
+            </div>
+            <label className={styles.contactField}><span>{t.contactName}</span><input type="text" maxLength={100} value={contactName} onChange={event => setContactName(event.target.value)} placeholder={t.contactNamePlaceholder}/></label>
+            <label className={styles.contactField}><span>{t.contactMessage}</span><textarea required minLength={2} maxLength={2500} rows={5} value={contactMessage} onChange={event => setContactMessage(event.target.value)} placeholder={t.contactMessagePlaceholder}/></label>
+            <button className={styles.contactSubmit} type="submit"><Send size={17} aria-hidden="true"/>{t.contactSend}<ArrowUpRight size={16} aria-hidden="true"/></button>
+            <p className={styles.contactNotice}>{t.contactNotice}</p>
+          </form>
+        </div>
+      </section>
     </main>
     <footer className={styles.footer}><span>SUDO NOVA</span><p>{t.footer}</p><a href="#inicio">{t.backTop} ↑</a></footer>
     <div ref={flyingMascot} className={styles.flyingMascot} aria-hidden="true"><Image src="/images/sudo-nova-mascot.png" alt="" width={1254} height={1254} sizes="280px"/></div>
-    <div className={styles.mascot} aria-hidden="true"><div ref={mascotImage} className={styles.mascotImage}><span className={styles.orbitRing}/><Image src="/images/sudo-nova-mascot.png" alt="" width={1254} height={1254} sizes="90px"/></div></div>
+    <FreeMascot language={language}/>
   </div>;
 }
+
