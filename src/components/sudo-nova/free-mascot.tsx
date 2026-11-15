@@ -25,10 +25,13 @@ export default function FreeMascot({ language }: { language: "pt" | "en" }) {
             const range = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
             const progress = reduced.matches ? 0 : Math.max(0, Math.min(1, window.scrollY / range));
             // The anchor rises along the side as the visitor scrolls down.
-            const travel = Math.min(window.innerHeight * .42, Math.max(0, b.height - minY - 48));
+            const bottom = Math.max(minY, b.height - 28);
+            // Leave room for idle bobbing and rotation just below the header.
+            const top = Math.min(bottom, minY + 12);
+            const travel = bottom - top;
             return {
                 x: b.width - 12 - Math.sin(progress * Math.PI) * 8,
-                y: Math.max(minY, b.height - 28 - progress * travel)
+                y: bottom - progress * travel
             };
         };
         const protectContent = () => {
@@ -163,5 +166,6 @@ export default function FreeMascot({ language }: { language: "pt" | "en" }) {
         <Image src="/images/sudo-nova-mascot.png" alt="" width={1254} height={1254} sizes="78px" draggable={false} />
     </button>;
 }
+
 
 
