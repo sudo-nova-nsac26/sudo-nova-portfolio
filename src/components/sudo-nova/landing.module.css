@@ -2113,3 +2113,26 @@
         transition: none
     }
 }
+
+/* Lightweight star field behind the satellite; no canvas or extra animation loop. */
+.orbitalBackground::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 0 22%;
+    pointer-events: none;
+    opacity: .46;
+    background-image: radial-gradient(circle at 23px 41px, var(--paper) 0 1px, transparent 1.8px), radial-gradient(circle at 107px 137px, var(--accent) 0 .8px, transparent 1.6px), radial-gradient(circle at 61px 193px, var(--paper) 0 .7px, transparent 1.4px), radial-gradient(circle at 173px 79px, var(--paper) 0 1.3px, transparent 2px), radial-gradient(circle at 237px 241px, var(--accent) 0 1px, transparent 1.8px);
+    background-size: 211px 257px, 307px 331px, 263px 389px, 419px 443px, 503px 467px;
+    mask-image: linear-gradient(to right, transparent, #000 38%);
+}
+
+.site[data-theme="light"] .orbitalBackground::before {
+    opacity: .24;
+}
+
+@media(max-width:720px) {
+    .orbitalBackground::before {
+        left: 0;
+        opacity: .32;
+    }
+}
