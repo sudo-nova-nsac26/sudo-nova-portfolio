@@ -13,13 +13,26 @@ Three people, different perspectives, and a shared drive to turn curiosity into 
 [![Explore Portfolio](https://img.shields.io/badge/EXPLORE_PORTFOLIO-00DBE7?style=for-the-badge&labelColor=071824&logo=cloudflare&logoColor=white)](https://sudonova.surfacesignal.earth/)
 [![Team GitHub](https://img.shields.io/badge/TEAM_GITHUB-172A38?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sudo-nova-nsac26)
 
-![Next.js 16](https://img.shields.io/badge/Next.js_16-000000?style=flat-square&logo=nextdotjs&logoColor=white)
-![React 19](https://img.shields.io/badge/React_19-149ECA?style=flat-square&logo=react&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![CSS Modules](https://img.shields.io/badge/CSS_Modules-264DE4?style=flat-square&logo=css&logoColor=white)
-![GSAP](https://img.shields.io/badge/GSAP-0B0B0B?style=flat-square&logo=greensock&logoColor=88CE02)
-![Lucide React](https://img.shields.io/badge/Lucide_React-F56565?style=flat-square&logo=lucide&logoColor=white)
-![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-F38020?style=flat-square&logo=cloudflare&logoColor=white)
+
+<!-- Technology badges — verified against package.json and application source -->
+<p align="center">
+  <sub><strong>FRAMEWORK &amp; INTERFACE</strong></sub>
+</p>
+<p align="center">
+  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js_16-071824?style=for-the-badge&amp;logo=nextdotjs&amp;logoColor=FFFFFF" alt="Next.js 16" /></a>
+  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React_19-133A4A?style=for-the-badge&amp;logo=react&amp;logoColor=61DAFB" alt="React 19" /></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-1B4774?style=for-the-badge&amp;logo=typescript&amp;logoColor=FFFFFF" alt="TypeScript" /></a>
+  <a href="https://github.com/css-modules/css-modules"><img src="https://img.shields.io/badge/CSS_Modules-174B62?style=for-the-badge&amp;logo=css3&amp;logoColor=FFFFFF" alt="CSS Modules" /></a>
+</p>
+<p align="center">
+  <sub><strong>ANIMATION, ICONS &amp; HOSTING</strong></sub>
+</p>
+<p align="center">
+  <a href="https://gsap.com/"><img src="https://img.shields.io/badge/GSAP-18382E?style=for-the-badge&amp;logo=gsap&amp;logoColor=88CE02" alt="GSAP" /></a>
+  <a href="https://lucide.dev/"><img src="https://img.shields.io/badge/Lucide_React-3A2A42?style=for-the-badge&amp;logo=lucide&amp;logoColor=F5A3B5" alt="Lucide React" /></a>
+  <a href="https://pages.cloudflare.com/"><img src="https://img.shields.io/badge/Cloudflare_Pages-55361E?style=for-the-badge&amp;logo=cloudflare&amp;logoColor=F38020" alt="Cloudflare Pages" /></a>
+</p>
+
 
 **[Website](https://sudonova.surfacesignal.earth/)** · **[Projects](https://sudonova.surfacesignal.earth/#projetos)** · **[Team](https://sudonova.surfacesignal.earth/#equipe)** · **[Contact](https://sudonova.surfacesignal.earth/#contato)**
 
