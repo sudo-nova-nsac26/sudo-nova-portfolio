@@ -8,13 +8,17 @@
 
 Three people, different perspectives, and a shared drive to turn curiosity into real projects.
 
+**English** · [Português](./README.pt-BR.md)
+
 [![Explore Portfolio](https://img.shields.io/badge/EXPLORE_PORTFOLIO-00DBE7?style=for-the-badge&labelColor=071824&logo=cloudflare&logoColor=white)](https://sudonova.surfacesignal.earth/)
 [![Team GitHub](https://img.shields.io/badge/TEAM_GITHUB-172A38?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sudo-nova-nsac26)
 
-![Next.js](https://img.shields.io/badge/Next.js_16-000000?style=flat-square&logo=nextdotjs&logoColor=white)
-![React](https://img.shields.io/badge/React_19-149ECA?style=flat-square&logo=react&logoColor=white)
+![Next.js 16](https://img.shields.io/badge/Next.js_16-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![React 19](https://img.shields.io/badge/React_19-149ECA?style=flat-square&logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![CSS Modules](https://img.shields.io/badge/CSS_Modules-264DE4?style=flat-square&logo=css&logoColor=white)
 ![GSAP](https://img.shields.io/badge/GSAP-0B0B0B?style=flat-square&logo=greensock&logoColor=88CE02)
+![Lucide React](https://img.shields.io/badge/Lucide_React-F56565?style=flat-square&logo=lucide&logoColor=white)
 ![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-F38020?style=flat-square&logo=cloudflare&logoColor=white)
 
 **[Website](https://sudonova.surfacesignal.earth/)** · **[Projects](https://sudonova.surfacesignal.earth/#projetos)** · **[Team](https://sudonova.surfacesignal.earth/#equipe)** · **[Contact](https://sudonova.surfacesignal.earth/#contato)**
@@ -45,13 +49,15 @@ This repository contains the source code for our team portfolio: a space to intr
   <img src="public/images/logo-surface-signal.png" alt="SurfaceSignal project visual identity" width="460" />
 </div>
 
-**SurfaceSignal** is an early-stage concept presented in the context of the **NASA Space Apps Challenge 2026**. The project explores ways to compare radar observations from the **NISAR** mission to investigate potential changes on Earth's surface and communicate the findings clearly.
+**[SurfaceSignal](https://surfacesignal.earth/)** is a published interactive Earth observation application developed for the **[NASA Space Apps Challenge 2026](https://www.spaceappschallenge.org/2026/)** and the **Dancing with the SARs** challenge.
 
-The initial area of interest covers **Lajeado and Estrela, in the Taquari Valley, Rio Grande do Sul, Brazil**.
+Using observations from the **NASA–ISRO NISAR** mission, its pilot examines surface changes near **Lajeado and Estrela, in Brazil's Taquari Valley**. The analysis processed **19 real NISAR acquisitions (approximately 131 GB of original HDF5 data)** and produced **17 historical radar comparisons**.
 
-**Core question:** How can we compare observations of the same region at different times, investigate differences, and present the results with appropriate context and limitations?
+The results are complemented with rainfall estimates (CHIRPS), historical water occurrence (JRC), land cover (ESA WorldCover), terrain information (Copernicus DEM), IBGE boundaries, and SGB hydrological context. Visitors can explore interactive 2D/3D geographic visualizations, temporal comparisons, and source-aware explanations in Portuguese or English.
 
-> **Technical note:** Differences in radar signals require interpretation and validation. On their own, they do not confirm flooding. SurfaceSignal is not an operational warning system.
+**[Explore the live SurfaceSignal application](https://surfacesignal.earth/)** · **[View the project presentation](https://github.com/sudo-nova-nsac26/presentation/blob/main/Surface%20Signal%20-%20Presentation.pdf)**
+
+> **Scientific limitation:** Detected radar changes are exploratory observations, not independently confirmed floods or environmental impacts. SurfaceSignal is not a flood-prediction or emergency-alert system.
 
 ## ◇ Meet the Team
 
