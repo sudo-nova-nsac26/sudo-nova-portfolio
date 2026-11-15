@@ -2136,3 +2136,19 @@
         opacity: .32;
     }
 }
+
+
+/* Official project identity and readable actions in both themes. */
+.projectVisual { display:flex; align-items:center; justify-content:center; padding:64px 28px 32px; }
+.projectLogo { display:block; width:100%; max-width:520px; height:auto; object-fit:contain; }
+.projectActions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+.site .projectCopy .textLink {
+    color:var(--paper);
+    background:var(--surface);
+    border:1px solid var(--line);
+    margin-top:0;
+    line-height:1.5;
+}
+.site .projectCopy .textLink:hover { color:var(--paper); border-color:var(--accent); background:var(--surface-raised); }
+.site .projectCopy .textLink svg { color:var(--accent); flex-shrink:0; }
+@media(max-width:720px) { .projectVisual { min-height:300px; padding:62px 24px 30px; } }
