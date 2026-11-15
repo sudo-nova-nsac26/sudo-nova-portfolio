@@ -3,7 +3,7 @@ export type Member = { name: string; initials: string; number: string; github: s
 // Preencha somente URLs confirmadas. Campos vazios não geram links falsos.
 export const members: Member[] = [
   { name: "Arthur Fassina", initials: "AF", number: "01", photo: "/images/team/arthur.jpg", github: "https://github.com/arthurhfassina", linkedin: "https://www.linkedin.com/in/arthur-henrique-f-3a7065142"},
-  { name: "Mateus Carniel Brambilla", initials: "MB", number: "02", github: "https://github.com/matbdev", linkedin: "https://www.linkedin.com/in/mateus-carniel-brambilla/"},
+  { name: "Mateus Carniel Brambilla", initials: "MB", number: "02", photo: "/images/team/mateus.webp", github: "https://github.com/matbdev", linkedin: "https://www.linkedin.com/in/mateus-carniel-brambilla/"},
   { name: "Yuri Korolko", initials: "YK", number: "03", photo: "/images/team/yuri.jpg", github: "https://github.com/korolkoo", linkedin: "https://www.linkedin.com/in/yuri-korolko-192689401/" },
 ];
 export const organizationUrl = "https://github.com/sudo-nova-nsac26";
