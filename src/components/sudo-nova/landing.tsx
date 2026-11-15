@@ -6,7 +6,7 @@ import type { FormEvent } from "react";
 import { ArrowDown, ArrowUpRight, CodeXml, Menu, X, Sun, Moon, Mail, Copy, Send } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { content, members, organizationUrl, projectPresentationUrl } from "./content";
+import { content, members, organizationUrl, projectPresentationUrl, surfaceSignalUrl } from "./content";
 import { usePreferences, savePreference } from "./preferences";
 import styles from "./landing.module.css";
 import { useMascotMotion } from "./mascot-motion";
@@ -132,7 +132,7 @@ export default function SudoNovaLanding() {
         <div className={styles.sectionHeading} data-reveal=""><p className={styles.eyebrow}>{t.projectLabel}</p><h2 id="projects-title">{t.projectTitle}</h2></div>
         <article className={styles.project} data-reveal="">
           <div className={styles.projectVisual}><span className={styles.visualLabel}>{t.projectNumber}</span><Image src="/images/logo-surface-signal.png" alt="SurfaceSignal" width={1447} height={1087} sizes="(max-width: 720px) 88vw, 560px" className={styles.projectLogo}/></div>
-          <div className={styles.projectCopy}><p className={styles.eyebrow}>{t.projectTag}</p><h3>SurfaceSignal<span>.</span></h3><p className={styles.projectLead}>{t.projectLead}</p><p>{t.projectText}</p><p className={styles.competition}>{t.projectContext}</p><div className={styles.projectActions}><a className={styles.textLink} href={organizationUrl} target="_blank" rel="noopener noreferrer">{t.projectLink}<ArrowUpRight size={19} aria-hidden="true"/></a>{projectPresentationUrl && <a className={styles.textLink} href={projectPresentationUrl} target="_blank" rel="noopener noreferrer">{t.presentationLink}<ArrowUpRight size={19} aria-hidden="true"/></a>}</div></div>
+          <div className={styles.projectCopy}><p className={styles.eyebrow}>{t.projectTag}</p><h3>SurfaceSignal<span>.</span></h3><p className={styles.projectLead}>{t.projectLead}</p><p>{t.projectText}</p><p className={styles.competition}>{t.projectContext}</p><div className={styles.projectActions}><a className={styles.textLink} href={surfaceSignalUrl} target="_blank" rel="noopener noreferrer">{t.projectLink}<ArrowUpRight size={19} aria-hidden="true"/></a>{projectPresentationUrl && <a className={styles.textLink} href={projectPresentationUrl} target="_blank" rel="noopener noreferrer">{t.presentationLink}<ArrowUpRight size={19} aria-hidden="true"/></a>}</div></div>
         </article>
         <div className={styles.projectScope} aria-label={t.projectDetails} data-reveal="">{t.projectScope.map(([title,description],index) => <div key={index}><span>0{index+1}</span><h3>{title}</h3><p>{description}</p></div>)}</div>
         <p className={styles.projectLimit}>{t.projectLimit}</p>
