@@ -80,3 +80,25 @@
 @media(max-width:720px){.memberIdentity{min-height:145px}.memberIdentity .initials{font-size:62px}.memberPortrait{flex-basis:min(45%,150px)}.contact{padding:65px 6%}.contactIntro h2{letter-spacing:-1px}.contactForm{padding:18px}.contactEmail a{font-size:13px}}
 @media(max-width:380px){.contactEmail{flex-wrap:wrap}.contactEmail button{width:100%;justify-content:center}.topicButtons{grid-template-columns:1fr 1fr}}
 @media(prefers-reduced-motion:reduce){.memberPhoto{transition:none}.member:hover .memberPhoto{transform:none}}
+
+
+/* Shared controls: outlined navy surfaces and cyan active states. */
+.site{position:relative;isolation:isolate}
+.site main,.footer{position:relative;z-index:1}
+.languageSwitch{display:inline-flex;align-items:center;gap:3px;padding:3px;border:1px solid var(--line);background:var(--surface);border-radius:999px}
+.languageSwitch button{min-width:36px;min-height:36px;padding:6px;border:0;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer;font-size:11px;font-weight:700}
+.languageSwitch button[aria-pressed="true"],.topicButtons button[aria-pressed="true"]{background:var(--accent);color:var(--button-ink);border-color:var(--accent);box-shadow:0 0 14px color-mix(in srgb,var(--accent) 25%,transparent)}
+.toolButton,.github,.menuButton,.primary,.textLink,.profileLinks>a,.contactGithub,.contactEmail button,.contactSubmit,.topicButtons button{border-radius:11px;transition:background .2s,border-color .2s,box-shadow .2s,transform .2s}
+.toolButton,.github,.textLink,.profileLinks>a,.contactGithub{border:1px solid var(--line);background:var(--surface);min-height:44px}
+.textLink{padding:11px 15px}
+.primary,.contactSubmit{box-shadow:0 0 18px color-mix(in srgb,var(--accent) 18%,transparent)}
+.toolButton:hover,.github:hover,.textLink:hover,.profileLinks>a:hover,.contactGithub:hover{border-color:var(--accent);background:var(--surface-raised)}
+.orbitalBackground{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;color:var(--accent)}
+.satellite{position:absolute;width:min(62vw,780px);height:auto;right:-13%;top:16%;opacity:.11;animation:orbitalDrift 24s ease-in-out infinite alternate}
+@keyframes orbitalDrift{from{transform:translate(0,0) rotate(-18deg)}to{transform:translate(-35px,65px) rotate(5deg)}}
+.freeMascot{position:fixed;top:0;left:0;z-index:80;width:78px;height:78px;padding:0;background:transparent;border:0;border-radius:50%;cursor:grab;touch-action:none;user-select:none;will-change:transform;filter:drop-shadow(0 6px 10px #0004)}
+.freeMascot[data-dragging="true"]{cursor:grabbing}
+.freeMascot img{width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
+@media(max-width:720px){.freeMascot{width:58px;height:58px}.satellite{width:100vw;right:-42%;opacity:.08}.languageSwitch button{min-width:30px}.headerActions{gap:3px}}
+@media(max-width:380px){.languageSwitch{gap:0;padding:2px}.languageSwitch button{min-width:27px}.brand .wordmark{font-size:16px}.mascotDock{flex-basis:26px;width:26px}}
+@media(prefers-reduced-motion:reduce){.satellite{animation:none}.toolButton,.github,.menuButton,.primary,.textLink,.profileLinks>a,.contactGithub,.contactEmail button,.contactSubmit,.topicButtons button{transition:none}}

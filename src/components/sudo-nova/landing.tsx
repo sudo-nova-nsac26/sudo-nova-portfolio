@@ -3,13 +3,16 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
-import { ArrowDown, ArrowUpRight, CodeXml, Menu, X, Sun, Moon, Languages, Mail, Copy, Send } from "lucide-react";
+import { ArrowDown, ArrowUpRight, CodeXml, Menu, X, Sun, Moon, Mail, Copy, Send } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { content, members, organizationUrl } from "./content";
 import { usePreferences, savePreference } from "./preferences";
 import styles from "./landing.module.css";
 import { useMascotMotion } from "./mascot-motion";
+
+import FreeMascot from "./free-mascot";
+import OrbitalBackground from "./orbital-background";
 
 const sections = ["sobre", "projetos", "equipe", "contato"];
 const CONTACT_EMAIL = "sudonova@matbdev.com";
@@ -30,13 +33,12 @@ function safeProfile(value: string, domain: string) {
 
 export default function SudoNovaLanding() {
   const root = useRef<HTMLDivElement>(null);
-  const mascotImage = useRef<HTMLDivElement>(null);
   const logoStage = useRef<HTMLDivElement>(null);
   const mascotDock = useRef<HTMLSpanElement>(null);
   const flyingMascot = useRef<HTMLDivElement>(null);
   const originalLogo = useRef<HTMLDivElement>(null);
   const logoBase = useRef<HTMLDivElement>(null);
-  useMascotMotion({ root, stage: logoStage, dock: mascotDock, flyer: flyingMascot, original: originalLogo, base: logoBase, corner: mascotImage });
+  useMascotMotion({ root, stage: logoStage, dock: mascotDock, flyer: flyingMascot, original: originalLogo, base: logoBase });
   const { language, theme } = usePreferences();
   const t = content[language];
   const [menuOpen, setMenuOpen] = useState(false);
@@ -93,13 +95,17 @@ export default function SudoNovaLanding() {
   }, [menuOpen]);
 
   return <div className={styles.site} data-theme={theme} lang={language === "pt" ? "pt-BR" : "en"} ref={root}>
+    <OrbitalBackground/>
     <a href="#conteudo" className={styles.skip}>{t.skip}</a>
     <header className={styles.header}>
       <div className={styles.headerInner}>
         <a className={styles.brand} href="#inicio" aria-label={t.home}><span ref={mascotDock} className={styles.mascotDock} aria-hidden="true"><Image src="/images/sudo-nova-mascot.png" alt="" width={1254} height={1254} sizes="46px"/></span><span className={styles.wordmark}>Sudo <span>Nova</span></span></a>
         <nav className={styles.desktopNav} aria-label={t.navigation}>{sections.map((id,i) => <a key={id} href={`#${id}`}>{t.nav[i]}</a>)}</nav>
         <div className={styles.headerActions}>
-          <button className={styles.toolButton} title={t.language} aria-label={t.language} onClick={() => savePreference("language", language === "pt" ? "en" : "pt")}><Languages size={17} aria-hidden="true"/><span>{language === "pt" ? "EN" : "PT"}</span></button>
+          <div className={styles.languageSwitch} role="group" aria-label={language === "pt" ? "Idioma" : "Language"}>
+            <button type="button" lang="pt-BR" aria-label="Português" aria-pressed={language === "pt"} onClick={() => savePreference("language", "pt")}>PT</button>
+            <button type="button" lang="en" aria-label="English" aria-pressed={language === "en"} onClick={() => savePreference("language", "en")}>EN</button>
+          </div>
           <button className={styles.toolButton} title={`${t.theme} ${theme === "dark" ? t.light : t.dark}`} aria-label={`${t.theme} ${theme === "dark" ? t.light : t.dark}`} onClick={() => savePreference("theme", theme === "dark" ? "light" : "dark")}>{theme === "dark" ? <Sun size={18} aria-hidden="true"/> : <Moon size={18} aria-hidden="true"/>}</button>
           <a className={styles.github} href={organizationUrl} target="_blank" rel="noopener noreferrer"><CodeXml size={17} aria-hidden="true"/><span>GitHub</span><ArrowUpRight size={15} aria-hidden="true"/></a>
           <button ref={menuButton} className={styles.menuButton} aria-label={menuOpen ? t.closeMenu : t.openMenu} aria-expanded={menuOpen} aria-controls="mobile-nav" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X aria-hidden="true"/> : <Menu aria-hidden="true"/>}</button>
@@ -186,6 +192,7 @@ export default function SudoNovaLanding() {
     </main>
     <footer className={styles.footer}><span>SUDO NOVA</span><p>{t.footer}</p><a href="#inicio">{t.backTop} ↑</a></footer>
     <div ref={flyingMascot} className={styles.flyingMascot} aria-hidden="true"><Image src="/images/sudo-nova-mascot.png" alt="" width={1254} height={1254} sizes="280px"/></div>
-    <div className={styles.mascot} aria-hidden="true"><div ref={mascotImage} className={styles.mascotImage}><span className={styles.orbitRing}/><Image src="/images/sudo-nova-mascot.png" alt="" width={1254} height={1254} sizes="90px"/></div></div>
+    <FreeMascot language={language}/>
   </div>;
 }
+

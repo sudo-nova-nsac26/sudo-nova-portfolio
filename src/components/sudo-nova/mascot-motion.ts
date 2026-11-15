@@ -25,11 +25,10 @@ type MotionRefs = {
   flyer: RefObject<HTMLDivElement | null>;
   original: RefObject<HTMLDivElement | null>;
   base: RefObject<HTMLDivElement | null>;
-  corner: RefObject<HTMLDivElement | null>;
 };
 
 export function useMascotMotion(refs: MotionRefs) {
-  const { root, stage, dock, flyer, original, base, corner } = refs;
+  const { root, stage, dock, flyer, original, base } = refs;
   useEffect(() => {
     if (!root.current || !stage.current || !dock.current || !flyer.current) return;
     gsap.registerPlugin(ScrollTrigger);
@@ -75,19 +74,13 @@ export function useMascotMotion(refs: MotionRefs) {
           },
         });
         paint();
-        // The second companion stays within the edge, with movement driven only by scrolling.
-        const orbit = gsap.timeline({ scrollTrigger: { trigger: root.current, start: "top top", end: "bottom bottom", scrub: .9, invalidateOnRefresh: true } });
-        orbit.to(corner.current, { y: () => -window.innerHeight * .17, x: -8, rotation: -7, duration: 1, ease: "sine.inOut" })
-          .to(corner.current, { y: () => -window.innerHeight * .35, x: -3, rotation: 6, duration: 1, ease: "sine.inOut" })
-          .to(corner.current, { y: () => -window.innerHeight * .12, x: -12, rotation: -5, duration: 1, ease: "sine.inOut" })
-          .to(corner.current, { y: () => -window.innerHeight * .29, x: -2, rotation: 7, duration: 1, ease: "sine.inOut" })
-          .to(corner.current, { y: 0, x: 0, rotation: 0, duration: 1, ease: "sine.inOut" });
         const images = Array.from(stage.current!.querySelectorAll("img"));
         const refresh = () => ScrollTrigger.refresh();
         images.forEach(img => { if (!img.complete) img.addEventListener("load", refresh); });
-        return () => { images.forEach(img => img.removeEventListener("load", refresh)); animation.kill(); orbit.kill(); };
+        return () => { images.forEach(img => img.removeEventListener("load", refresh)); animation.kill(); };
       });
     }, root);
     return () => { media.revert(); context.revert(); };
-  }, [root, stage, dock, flyer, original, base, corner]);
+  }, [root, stage, dock, flyer, original, base]);
 }
+

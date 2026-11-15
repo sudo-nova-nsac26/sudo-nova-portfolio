@@ -45,5 +45,12 @@ next-env.d.ts
 *.suo
 *.user
 
+
+# Next.js
+.next/
+out/
+node_modules/
+
 # Instalador temporário
 sudo-nova-update/
+
